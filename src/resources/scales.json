@@ -1,0 +1,218 @@
+[
+  {
+    "name": ["Ionian", "Major"],
+    "remark": "(don't emphasize the 4th)",
+    "category": "Major",
+    "symbol": ["X", "X∆"],
+    "scale": "WWHWWWH"
+  },
+  {
+    "name": "Major Pentatonic",
+    "category": ["Major", "Dominant 7th"],
+    "symbol": ["X", "X7"],
+    "scale": "WW-W-"
+  },
+  {
+    "name": "Lydian",
+    "remark": "(major scale with #4)",
+    "category": "Major",
+    "symbol": "X∆+4",
+    "scale": "WWWHWWH"
+  },
+  {
+    "name": "Bebop",
+    "remark": "(Major)",
+    "category": "Major",
+    "symbol": "X∆",
+    "scale": "WWHWHHWH"
+  },
+  {
+    "name": "Harmonic Major",
+    "category": "Major",
+    "symbol": "X∆b6",
+    "scale": "WWHWH-H"
+  },
+  {
+    "name": "Lydian Augmented",
+    "category": "Major",
+    "symbol": "X∆+5,+4",
+    "scale": "WWWWHWH"
+  },
+  {
+    "name": "Augmented",
+    "category": "Major",
+    "symbol": "X",
+    "scale": "-H-H-H"
+  },
+  {
+    "name": "Harmonic Minor 6th Mode",
+    "category": "Major",
+    "symbol": "X",
+    "scale": "-HWHWWH"
+  },
+  {
+    "name": "Diminished",
+    "remark": "(begin with H step)",
+    "category": ["Major", "Dominant 7th"],
+    "symbol": ["X", "X7b9"],
+    "scale": "HWHWHWHW",
+    "also_has": ["#9", "#4"]
+  },
+  {
+    "name": "Blues Scale",
+    "category": ["Major", "Dominant 7th", "Minor"],
+    "symbol": ["X", "X7", "X-", "X-7"],
+    "scale": "-WHH-W"
+  },
+  {
+    "name": "Dominant 7th",
+    "category": "Dominant 7th",
+    "symbol": "X7",
+    "scale": "WWHWWHW"
+  },
+  {
+    "name": "Bebop",
+    "remark": "(Dominant)",
+    "category": "Dominant 7th",
+    "symbol": "X7",
+    "scale": "WWHWWHHH"
+  },
+  {
+    "name": "Spanish / Jewish scale",
+    "category": "Dominant 7th",
+    "symbol": "X7b9",
+    "scale": "H-HWHWW"
+  },
+  {
+    "name": "Lydian Dominant",
+    "category": "Dominant 7th",
+    "symbol": "X7+4",
+    "scale": "WWWHWHW"
+  },
+  {
+    "name": "Hindu",
+    "category": "Dominant 7th",
+    "symbol": "X7b6",
+    "scale": "WWHWHWW"
+  },
+  {
+    "name": "Whole Tone",
+    "remark": "(6 tone scale)",
+    "category": "Dominant 7th",
+    "symbol": "X7+",
+    "scale": "WWWWWW",
+    "also_has": ["#4", "#5"]
+  },
+  {
+    "name": "Diminished Whole Tone",
+    "category": "Dominant 7th",
+    "symbol": "X7+9",
+    "scale": "HWHWWWW",
+    "also_has": ["b9", "#4", "#5"]
+  },
+  {
+    "name": "Dominant 7th",
+    "remark": "(don't emphasize the 3rd)",
+    "category": "Dominant 7th Sus 4",
+    "symbol": ["X7 sus 4", "Y-/X"],
+    "scale": "WWHWWHW"
+  },
+  {
+    "name": "Major Pentatonic built on b7",
+    "category": "Dominant 7th Sus 4",
+    "symbol": ["X7 sus 4", "Y-/X"],
+    "scale": "WW-W-"
+  },
+  {
+    "name": "Bebop Scale",
+    "category": "Dominant 7th Sus 4",
+    "symbol": ["X7 sus 4", "Y-/X"],
+    "scale": "WWHWWHHH",
+    "start_with": -1
+  },
+  {
+    "name": "Dorian",
+    "category": "Minor",
+    "symbol": ["X-", "X-7"],
+    "scale": "WHWWWHW"
+  },
+  {
+    "name": "Pentatonic",
+    "remark": "(Minor Pentatonic)",
+    "category": "Minor",
+    "symbol": ["X-", "X-7"],
+    "scale": "-WW-W"
+  },
+  {
+    "name": "Bebop",
+    "remark": "(Minor)",
+    "category": "Minor",
+    "symbol": ["X-", "X-7"],
+    "scale": "WHHHWWHW"
+  },
+  {
+    "name": "Melodic Minor",
+    "remark": "(ascending)",
+    "category": "Minor",
+    "symbol": "X-∆",
+    "scale": "WHWWWWH"
+  },
+  {
+    "name": "Bebop Minor No. 2",
+    "category": "Minor",
+    "symbol": ["X-", "X-6"],
+    "scale": "WHWWHHWH"
+  },
+  {
+    "name": "Harmonic Minor",
+    "category": "Minor",
+    "symbol": "X-∆",
+    "scale": "WHWWH-H",
+    "also_has": ["b6"]
+  },
+  {
+    "name": "Diminished",
+    "remark": "(begin with W step)",
+    "category": "Minor",
+    "symbol": ["X-", "X-7"],
+    "scale": "WHWHWHWH"
+  },
+  {
+    "name": "Phrygian",
+    "category": "Minor",
+    "symbol": ["X-", "X-b9b6"],
+    "scale": "HWWWHWW"
+  },
+  {
+    "name": ["Aeolian", "Pure/Natural Minor"],
+    "category": "Minor",
+    "symbol": ["X-", "X-b6"],
+    "scale": "WHWWHWW"
+  },
+  {
+    "name": ["Locrian", "Half Diminished"],
+    "category": "Half Diminished",
+    "symbol": "XØ",
+    "scale": "HWWHWWW"
+  },
+  {
+    "name": ["Locrian #2", "Half Diminished #2"],
+    "category": "Half Diminished",
+    "symbol": ["XØ#2", "XØ9"],
+    "scale": "WHWHWWW"
+  },
+  {
+    "name": "Bebop Scale Diminished",
+    "remark": "(with or without #2)",
+    "category": "Half Diminished",
+    "symbol": "XØ",
+    "scale": "HWWHHHWW"
+  },
+  {
+    "name": "Diminished",
+    "remark": "(8 tone scale)",
+    "category": "Diminished",
+    "symbol": "X°",
+    "scale": "WHWHWHWH"
+  }
+]

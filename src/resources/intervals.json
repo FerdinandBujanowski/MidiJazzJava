@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Prime",
+        "steps": 0,
+        "quality": "P"
+    },
+    {
+        "name": "Minor 2nd",
+        "steps": 1,
+        "quality": "m"
+    },
+    {
+        "name": "Major 2nd",
+        "steps": 2,
+        "quality": "M"
+    },
+    {
+        "name": "Minor 3rd",
+        "steps": 3,
+        "quality": "m"
+    },
+    {
+        "name": "Major 3rd",
+        "steps": 4,
+        "quality": "M"
+    },
+    {
+        "name": "Perfect 4th",
+        "steps": 5,
+        "quality": "P"
+    },
+    {
+        "name": "Augmented 4th / Tritone",
+        "steps": 6,
+        "quality": "A"
+    },
+    {
+        "name": "Diminished 5th / Tritone",
+        "steps": 6,
+        "quality": "D"
+    },
+    {
+        "name": "Perfect 5th",
+        "steps": 7,
+        "quality": "P"
+    },
+    {
+        "name": "Augmented 5th",
+        "steps": 8,
+        "quality": "A"
+    },
+    {
+        "name": "Minor 6th",
+        "steps": 8,
+        "quality": "m"
+    },
+    {
+        "name": "Major 6th",
+        "steps": 9,
+        "quality": "M"
+    },
+    {
+        "name": "Diminished 7th",
+        "steps": 9,
+        "quality": "D"
+    },
+    {
+        "name": "Minor 7th",
+        "steps": 10,
+        "quality": "m"
+    },
+    {
+        "name": "Major 7th",
+        "steps": 11,
+        "quality": "M"
+    },
+    {
+        "name": "Octave",
+        "steps": 12,
+        "quality": "P"
+    }
+]
