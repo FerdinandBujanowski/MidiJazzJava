@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MidiJazzJava:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MidiJazzJava_jar</output-path>
+    <root id="archive" name="MidiJazzJava.jar">
+      <element id="module-output" name="MidiJazzJava" />
+      <element id="extracted-dir" path="C:/Program Files/Java/javafx-sdk-21.0.1/lib/javafx.base.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/Program Files/Java/javafx-sdk-21.0.1/lib/javafx.controls.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/Program Files/Java/javafx-sdk-21.0.1/lib/javafx.graphics.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/Program Files/Java/gson-2.10.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
