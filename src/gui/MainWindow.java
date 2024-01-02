@@ -14,6 +14,8 @@ import javax.sound.midi.MidiUnavailableException;
 
 public class MainWindow {
 
+    //--module-path "C:\Program Files\Java\javafx-sdk-21.0.1\lib" --add-modules javafx.base,javafx.graphics,javafx.controls
+
     public static final Color PURPLE_DARK = new Color(40/255., 40/255., 56/255., 1.0);
     public static final Color PURPLE_MID_DARK = new Color(64/255., 56/255., 76/255., 1.0);
     public static final Color PURPLE_MID = new Color(128/255., 98/255., 136/255., 1.0);
