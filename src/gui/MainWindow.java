@@ -2,15 +2,15 @@ package gui;
 
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import midi.MidiHandler;
-
-import javax.sound.midi.MidiUnavailableException;
+import midi.device.MidiDeviceManager;
 
 public class MainWindow {
 
@@ -24,7 +24,7 @@ public class MainWindow {
     private Canvas canvas;
     private VBox vBox;
 
-    private Menu inputMenu, outputMenu, mixerMenu;
+    private Menu inputMenu, refreshMenu;
 
     public MainWindow(Stage stage) {
         this.stage = stage;
@@ -43,10 +43,24 @@ public class MainWindow {
         this.vBox = new VBox();
 
         this.inputMenu = new Menu("MIDI Input");
-        this.outputMenu = new Menu("Midi Output");
-        this.mixerMenu = new Menu("Audio Devices");
 
-        MenuBar menuBar = new MenuBar(this.inputMenu, this.outputMenu, this.mixerMenu);
+        this.refreshMenu = new Menu("Refresh..");
+        MenuItem refreshItem = new MenuItem("Refresh Devices");
+        refreshItem.setOnAction(e -> {
+            MidiDeviceManager.getInstance().refreshDevices();
+
+            this.inputMenu.getItems().removeAll();
+            for(String name : MidiDeviceManager.getInstance().getDeviceNames()) {
+                MenuItem currentDeviceItem = new CheckMenuItem(name);
+                currentDeviceItem.setOnAction(e1 -> {
+                    // device selected
+                });
+                this.inputMenu.getItems().add(currentDeviceItem);
+            }
+        });
+        refreshMenu.getItems().addAll(refreshItem);
+
+        MenuBar menuBar = new MenuBar(this.inputMenu, this.refreshMenu);
         menuBar.setBackground(Background.fill(PURPLE_MID));
         vBox.getChildren().add(menuBar);
 
@@ -54,12 +68,6 @@ public class MainWindow {
         this.stage.setScene(new Scene(this.vBox));
 
         stage.show();
-
-        try {
-            MidiHandler.logMidiDevices();
-        } catch (MidiUnavailableException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     private void draw() {
@@ -69,9 +77,5 @@ public class MainWindow {
 
     private void updateMIDI() {
 
-    }
-
-    private void updateMixers() {
-        
     }
 }
