@@ -2,7 +2,9 @@ package midi.device;
 
 import javax.sound.midi.*;
 import de.tobiaserichsen.tevm.TeVirtualMIDI;
+import de.tobiaserichsen.tevm.TeVirtualMIDITest;
 import midi.MidiMessageListener;
+import theory.music.RealTimeAnalysis;
 
 import java.util.*;
 
@@ -29,8 +31,10 @@ public class MidiDeviceManager {
         this.deviceListeners = new ArrayList<>();
         this.messageListeners = new ArrayList<>();
 
-        // receiver that forward to virtual port
+        TeVirtualMIDI.logging(7);
+        this.virtualPort = new TeVirtualMIDI("MidiJazz Virtual Port");
 
+        // receiver that forward to virtual port
         this.mainReceiver = new Receiver() {
             @Override
             public void send(MidiMessage message, long timeStamp) {
@@ -59,6 +63,9 @@ public class MidiDeviceManager {
                 if(virtualPort != null) virtualPort.shutdown();
             }
         };
+
+        // test midi listener : "SharpLogger"
+        this.messageListeners.add(RealTimeAnalysis.getInstance().getSharpLogger());
     }
 
     public static MidiDeviceManager getInstance() {
@@ -93,14 +100,10 @@ public class MidiDeviceManager {
         this.selectedInputDevice = this.deviceMap.get(selectedPortName);
         try {
             this.selectedInputDevice.getTransmitter().setReceiver(this.mainReceiver);
+            this.selectedInputDevice.open();
         } catch (MidiUnavailableException e) {
             throw new RuntimeException(e);
         }
-
-        //reset virtual port
-        if(this.virtualPort != null) this.virtualPort.shutdown();
-        this.virtualPortName = selectedPortName + " - Virtual Input Port";
-        this.virtualPort = new TeVirtualMIDI(virtualPortName);
     }
 
     public Collection<String> getDeviceNames() {

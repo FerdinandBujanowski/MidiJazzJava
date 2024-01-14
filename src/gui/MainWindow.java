@@ -54,6 +54,8 @@ public class MainWindow {
                 MenuItem currentDeviceItem = new CheckMenuItem(name);
                 currentDeviceItem.setOnAction(e1 -> {
                     // device selected
+                    MidiDeviceManager.getInstance().selectPort(name);
+
                 });
                 this.inputMenu.getItems().add(currentDeviceItem);
             }
