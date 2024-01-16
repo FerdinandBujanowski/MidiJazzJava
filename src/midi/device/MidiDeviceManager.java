@@ -2,7 +2,6 @@ package midi.device;
 
 import javax.sound.midi.*;
 import de.tobiaserichsen.tevm.TeVirtualMIDI;
-import de.tobiaserichsen.tevm.TeVirtualMIDITest;
 import midi.MidiMessageListener;
 import theory.music.RealTimeAnalysis;
 
@@ -24,7 +23,6 @@ public class MidiDeviceManager {
     private List<MidiDeviceListener> deviceListeners;
     private List<MidiMessageListener> messageListeners;
 
-
     private MidiDeviceManager() {
         this.deviceInfoMap = new HashMap<>();
         this.deviceMap = new HashMap<>();
@@ -38,6 +36,7 @@ public class MidiDeviceManager {
         this.mainReceiver = new Receiver() {
             @Override
             public void send(MidiMessage message, long timeStamp) {
+
                 // handle message
                 if(message instanceof ShortMessage sm) {
                     int channel = sm.getChannel();
@@ -64,8 +63,8 @@ public class MidiDeviceManager {
             }
         };
 
-        // test midi listener : "SharpLogger"
-        this.messageListeners.add(RealTimeAnalysis.getInstance().getSharpLogger());
+        // FIRST ADDED LISTENER : updates which notes are turned on / off
+        this.messageListeners.add(RealTimeAnalysis.getInstance().getNoteStateUpdater());
     }
 
     public static MidiDeviceManager getInstance() {
@@ -108,5 +107,13 @@ public class MidiDeviceManager {
 
     public Collection<String> getDeviceNames() {
         return this.deviceMap.keySet();
+    }
+
+    public boolean addMessageListener(MidiMessageListener listener) {
+        return this.messageListeners.add(listener);
+    }
+
+    public boolean removeMessageListener(MidiMessageListener listener) {
+        return this.messageListeners.remove(listener);
     }
 }

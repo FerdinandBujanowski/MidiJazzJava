@@ -1,4 +1,4 @@
-package theory.music;
+package theory.music.notes;
 
 import java.util.ArrayList;
 import java.util.List;

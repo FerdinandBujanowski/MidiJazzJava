@@ -10,7 +10,10 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import midi.MidiMessageListener;
 import midi.device.MidiDeviceManager;
+
+import java.awt.*;
 
 public class MainWindow {
 
@@ -26,11 +29,15 @@ public class MainWindow {
 
     private Menu inputMenu, refreshMenu;
 
+    private PianoView pianoView;
+
     public MainWindow(Stage stage) {
         this.stage = stage;
         this.canvas = new Canvas();
         this.stage.setTitle("Jazz Trainer");
-        this.canvas = new Canvas(500, 500);
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.canvas = new Canvas(2/3. * screenSize.width, 2/3. * screenSize.height);
 
         this.stage.widthProperty().addListener((obs, oldVal, newVal) -> {
             this.canvas.setWidth((double)newVal);
@@ -69,15 +76,21 @@ public class MainWindow {
         vBox.getChildren().add(this.canvas);
         this.stage.setScene(new Scene(this.vBox));
 
+        this.pianoView = new PianoView(-1, 2);
+
+        // update GUI on incoming MIDI event
+        MidiDeviceManager.getInstance().addMessageListener(new MidiMessageListener() {
+            @Override public void noteOn(int channel, int key, int velocity) { draw(); }
+            @Override public void noteOff(int channel, int key, int velocity) { draw(); }
+        });
+
         stage.show();
     }
 
     private void draw() {
         this.canvas.getGraphicsContext2D().setFill(PURPLE_DARK);
         this.canvas.getGraphicsContext2D().fillRect(0, 0, this.canvas.getWidth(), this.canvas.getHeight());
-    }
-
-    private void updateMIDI() {
+        this.pianoView.draw(this.canvas.getGraphicsContext2D());
 
     }
 }
