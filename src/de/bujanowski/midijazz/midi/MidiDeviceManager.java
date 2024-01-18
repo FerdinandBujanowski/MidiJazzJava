@@ -1,13 +1,14 @@
-package midi.device;
+package de.bujanowski.midijazz.midi;
 
 import javax.sound.midi.*;
 import de.tobiaserichsen.tevm.TeVirtualMIDI;
-import midi.MidiMessageListener;
-import theory.music.RealTimeAnalysis;
+import de.bujanowski.midijazz.theory.music.RealTimeAnalysis;
 
 import java.util.*;
 
 public class MidiDeviceManager {
+
+    public static final int defaultChannel = 0;
 
     private static MidiDeviceManager INSTANCE;
     private Map<String, MidiDevice.Info> deviceInfoMap;

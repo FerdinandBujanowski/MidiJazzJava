@@ -1,10 +1,16 @@
-package gui;
+package de.bujanowski.midijazz.gui;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import theory.music.MusicTheory;
+import de.bujanowski.midijazz.midi.MidiDeviceManager;
+import de.bujanowski.midijazz.theory.music.MusicTheory;
+import de.bujanowski.midijazz.theory.music.RealTimeAnalysis;
 
 public class PianoView {
+
+    public static final Color WHITE_KEY = Color.WHITE;
+    public static final Color BLACK_KEY = Color.DARKGRAY.darker();
+    public static final Color CURRENTLY_PLAYING = Color.BLUE;
 
     /**
      * Example: lowestC = -1 --> one octave under medium C (MIDI : 48)
@@ -49,7 +55,7 @@ public class PianoView {
         int whiteKeysPassed = 0;
         for(int i = 0; i < this.totalKeys; i++) {
             if(!MusicTheory.isBlackKey(i)) {
-                context.setFill(Color.WHITE);
+                context.setFill(RealTimeAnalysis.getInstance().resolveColor(MidiDeviceManager.defaultChannel, this.lowMidiC + i));
                 context.fillRect(whiteKeysPassed * whiteKeyWidth, height - whiteKeyHeight, whiteKeyWidth, whiteKeyHeight);
                 context.setStroke(Color.BLACK);
                 context.strokeRect(whiteKeysPassed * whiteKeyWidth, height - whiteKeyHeight, whiteKeyWidth, whiteKeyHeight);
@@ -62,7 +68,7 @@ public class PianoView {
         whiteKeysPassed = 0;
         for(int i = 0; i < this.totalKeys; i++) {
             if(MusicTheory.isBlackKey(i)) {
-                context.setFill(Color.DARKGRAY.darker());
+                context.setFill(RealTimeAnalysis.getInstance().resolveColor(MidiDeviceManager.defaultChannel, this.lowMidiC + i));
                 context.fillRect(whiteKeysPassed * whiteKeyWidth - halfBlackKeyWidth, height - whiteKeyHeight, blackKeyWidth, blackKeyHeight);
                 context.setStroke(Color.BLACK);
                 context.strokeRect(whiteKeysPassed * whiteKeyWidth - halfBlackKeyWidth, height - whiteKeyHeight, blackKeyWidth, blackKeyHeight);

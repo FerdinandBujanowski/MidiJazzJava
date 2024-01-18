@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Ionian",
+    "mode": 1,
+    "scale": "WWHWWWH"
+  },
+  {
+    "name": "Dorian",
+    "mode": 2,
+    "scale": "WHWWWHW"
+  },
+  {
+    "name": "Phrygian",
+    "mode": 3,
+    "scale": "HWWWHWW"
+  },
+  {
+    "name": "Lydian",
+    "mode": 4,
+    "scale": "WWWHWWH"
+  },
+  {
+    "name": "Mixolydian",
+    "mode": 5,
+    "scale": "WWHWWHW"
+  },
+  {
+    "name": "Aeolian",
+    "mode": 6,
+    "scale": "WHWWHWW"
+  },
+  {
+    "name": "Locrian",
+    "mode": 7,
+    "scale": "HWWHWWW"
+  }
+]

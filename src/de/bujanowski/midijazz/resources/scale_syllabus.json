@@ -121,7 +121,8 @@
     "name": "Major Pentatonic built on b7",
     "category": "Dominant 7th Sus 4",
     "symbol": ["X7 sus 4", "Y-/X"],
-    "scale": "WW-W-"
+    "scale": "WW-W-",
+    "offset": -2
   },
   {
     "name": "Bebop Scale",

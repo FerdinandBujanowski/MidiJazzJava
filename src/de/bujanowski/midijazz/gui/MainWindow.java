@@ -1,4 +1,4 @@
-package gui;
+package de.bujanowski.midijazz.gui;
 
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -10,8 +10,8 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import midi.MidiMessageListener;
-import midi.device.MidiDeviceManager;
+import de.bujanowski.midijazz.midi.MidiMessageListener;
+import de.bujanowski.midijazz.midi.MidiDeviceManager;
 
 import java.awt.*;
 
@@ -34,7 +34,7 @@ public class MainWindow {
     public MainWindow(Stage stage) {
         this.stage = stage;
         this.canvas = new Canvas();
-        this.stage.setTitle("Jazz Trainer");
+        this.stage.setTitle("MIDI Jazz");
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.canvas = new Canvas(2/3. * screenSize.width, 2/3. * screenSize.height);
