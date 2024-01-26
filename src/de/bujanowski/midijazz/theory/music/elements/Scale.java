@@ -5,7 +5,7 @@ import de.bujanowski.midijazz.theory.music.MusicTheory;
 import java.util.Arrays;
 import java.util.List;
 
-public class Scale implements Comparable<Scale> {
+public class Scale implements Comparable<Scale>, Steppable {
 
     //TODO maybe delete this?
     /**
@@ -15,11 +15,11 @@ public class Scale implements Comparable<Scale> {
      */
     private Scale referenceScale;
 
-    private final List<String> names;
-    private final int[] steps;
-    private String remark;
+    public final String[] names;
+    public final int[] steps;
+    public String remark;
 
-    private Scale(List<String> names, String steps, int offset, String remark) {
+    private Scale(String[] names, String steps, int offset, String remark) {
         this.names = names;
         this.remark = remark;
 
@@ -34,14 +34,31 @@ public class Scale implements Comparable<Scale> {
                 default -> last = this.steps.length;
             }
         }
+        //System.out.println(Arrays.toString(this.steps));
     }
 
     /**
      * Function that allows the dynamic creation of scale objects, without invoking the constructor from outside.
      * @return the newly built Scale object.
      */
-    public static Scale buildScale(List<String> names, String steps, int offset, String remark) {
+    public static Scale buildScale(String[] names, String steps, int offset, String remark) {
         return new Scale(names, steps, offset, remark);
+    }
+
+    @Override
+    public boolean isSubscale(Steppable other) {
+        for(int step : this.steps) {
+            if(!other.hasStep(step)) return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean hasStep(int otherStep) {
+        for(int step : this.steps) {
+            if(otherStep == step) return true;
+        }
+        return false;
     }
 
     @Override
@@ -52,9 +69,9 @@ public class Scale implements Comparable<Scale> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < this.names.size(); i++) {
-            sb.append(this.names.get(i));
-            if(i != this.names.size() - 1) sb.append(", ");
+        for(int i = 0; i < this.names.length; i++) {
+            sb.append(this.names[i]);
+            if(i != this.names.length - 1) sb.append(", ");
         }
         if(this.remark != null) {
             sb.append(" ");

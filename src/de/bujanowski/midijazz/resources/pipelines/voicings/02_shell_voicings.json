@@ -1,0 +1,191 @@
+{
+  "title": "Shell Voicings",
+  "description":[
+    ""
+  ],
+  "skills": [
+    {
+      "name": "Skill 7: 3-6-9 Major",
+      "type": "chord",
+      "value": {
+        "family": "Maj7",
+        "child": "6,9",
+        "left_root": true,
+        "right_root": false,
+        "with_five": false,
+        "inversion": 0
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    },{
+      "name": "Skill 8: 3-6-9 Minor",
+      "type": "chord",
+      "value": {
+        "family": "m7",
+        "child": "m6,9",
+        "left_root": true,
+        "right_root": false,
+        "with_five": false,
+        "inversion": 0
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    },{
+      "name": "Skill 9: 3-7-9 Major",
+      "type": "chord",
+      "value": {
+        "family": "maj7",
+        "child": "maj9",
+        "left_root": true,
+        "right_root": false,
+        "with_five": false,
+        "inversion": 0
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    },{
+      "name": "Skill 10: 3-7-9 Dominant",
+      "type": "chord",
+      "value": {
+        "family": "7",
+        "child": "9",
+        "left_root": true,
+        "right_root": false,
+        "with_five": false,
+        "inversion": 0
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    },{
+      "name": "Skill 11: 3-7-9 Minor",
+      "type": "chord",
+      "value": {
+        "family": "m7",
+        "child": "m9",
+        "left_root": true,
+        "right_root": false,
+        "with_five": false,
+        "inversion": 0
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    },{
+      "name": "Skill 12: 7-3-5 Major",
+      "type": "chord",
+      "value": {
+        "family": "Maj7",
+        "child": null,
+        "left_root": true,
+        "right_root": false,
+        "with_five": true,
+        "inversion": 3
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    },{
+      "name": "Skill 13: 7-3-5 Dominant",
+      "type": "chord",
+      "value": {
+        "family": "7",
+        "child": null,
+        "left_root": true,
+        "right_root": false,
+        "with_five": true,
+        "inversion": 3
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    },{
+      "name": "Skill 14: 7-3-5 Minor",
+      "type": "chord",
+      "value": {
+        "family": "m7",
+        "child": null,
+        "left_root": true,
+        "right_root": false,
+        "with_five": true,
+        "inversion": 3
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    },{
+      "name": "Skill 15: 7-3-5 Half-Diminished",
+      "type": "chord",
+      "value": {
+        "family": "ø",
+        "child": null,
+        "left_root": true,
+        "right_root": false,
+        "with_five": true,
+        "inversion": 3
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    },{
+      "name": "Skill 16: 7-3-6 Major",
+      "type": "chord",
+      "value": {
+        "family": "Maj7",
+        "child": "Maj13",
+        "left_root": true,
+        "right_root": false,
+        "with_five": false,
+        "inversion": 0
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    },{
+      "name": "Skill 17: 7-3-6 Dominant",
+      "type": "chord",
+      "value": {
+        "family": "7",
+        "child": "13",
+        "left_root": true,
+        "right_root": false,
+        "with_five": false,
+        "inversion": 0
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    },{
+      "name": "Skill 18: 7-3-6 Minor",
+      "type": "chord",
+      "value": {
+        "family": "m7",
+        "child": "m13",
+        "left_root": true,
+        "right_root": false,
+        "with_five": false,
+        "inversion": 0
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    },{
+      "name": "Skill 19: 4-7-9 Dominant sus 4",
+      "type": "chord",
+      "value": {
+        "family": "7sus",
+        "child": "{b7}/{1}",
+        "left_root": true,
+        "right_root": false,
+        "with_five": false,
+        "inversion": 0
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    },{
+      "name": "Skill 20: 7-9-4-6 Dominant sus 4",
+      "type": "chord",
+      "value": {
+        "family": "7sus",
+        "child": "{b7}Maj7/{1}",
+        "left_root": true,
+        "right_root": false,
+        "with_five": false,
+        "inversion": 0
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    }
+  ]
+}

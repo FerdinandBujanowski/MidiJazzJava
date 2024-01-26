@@ -1,0 +1,99 @@
+{
+  "title": "Block Chords",
+  "description": [
+    "The goal of this section is familiarity with chord structures. As preparation for",
+    "learning voicings, one needs to solidify the spelling of the chords first. Consider",
+    "some of the following possibilities: ",
+    "1) Play the block chords as written (with the root in the left hand) or play them",
+    "as block chords in both hands.",
+    "2) Arpeggiate the chords up or down in quarter notes or up &down in eighth",
+    "notes. Keep the same harmonic rhythm of four beats to each chord.",
+    "3) Play four inversions of each chord on the root, 3rd, 5th and 7th. Double the",
+    "harmonic rhythm and play the inversions in eighth notes."
+  ],"skills": [
+    {
+      "name": "Skill 1: Major 7ths",
+      "type": "chord",
+      "value": {
+        "family": "Maj7",
+        "child": null,
+        "left_root": true,
+        "right_root": true,
+        "with_five": true,
+        "inversion": 0
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    },
+    {
+      "name": "Skill 2: Dominant 7ths",
+      "type": "chord",
+      "value": {
+        "family": "7",
+        "child": null,
+        "left_root": true,
+        "right_root": true,
+        "with_five": true,
+        "inversion": 0
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    },
+    {
+      "name": "Skill 3: Minor 7ths",
+      "type": "chord",
+      "value": {
+        "family": "m7",
+        "child": null,
+        "left_root": true,
+        "right_root": true,
+        "with_five": true,
+        "inversion": 0
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    },
+    {
+      "name": "Skill 4: Half-Diminished",
+      "type": "chord",
+      "value": {
+        "family": "ø",
+        "child": null,
+        "left_root": true,
+        "right_root": true,
+        "with_five": true,
+        "inversion": 0
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    },
+    {
+      "name": "Skill 5: Diminished 7ths",
+      "type": "chord",
+      "value": {
+        "family": "°",
+        "child": null,
+        "left_root": true,
+        "right_root": true,
+        "with_five": true,
+        "inversion": 0
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    },
+    {
+      "name": "Skill 6: Dominant 7ths sus4",
+      "type": "chord",
+      "value": {
+        "family": "7sus",
+        "child": null,
+        "left_root": true,
+        "right_root": true,
+        "with_five": true,
+        "inversion": 0
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    }
+  ]
+}

@@ -1,12 +1,13 @@
-package de.bujanowski.midijazz.gui;
+package de.bujanowski.midijazz.gui.elements;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import de.bujanowski.midijazz.midi.MidiDeviceManager;
-import de.bujanowski.midijazz.theory.music.MusicTheory;
-import de.bujanowski.midijazz.theory.music.RealTimeAnalysis;
+import de.bujanowski.midijazz.theory.music.*;
 
-public class PianoView {
+import java.awt.*;
+
+public class PianoView extends AbstractElement {
 
     public static final Color WHITE_KEY = Color.WHITE;
     public static final Color BLACK_KEY = Color.DARKGRAY.darker();
@@ -21,8 +22,10 @@ public class PianoView {
 
     private int totalKeys, whiteKeys, blackKeys;
 
-    public PianoView(int lowestC, int highestC) {
+    public PianoView(double[] bounds, int lowestC, int highestC) {
+        super(bounds);
         assert lowestC < highestC;
+
         int midC = MusicTheory.midC;
         int steps = MusicTheory.stepsInOctave;
 
@@ -40,22 +43,24 @@ public class PianoView {
         //System.out.println("total : " + this.totalKeys + ", black : " + this.blackKeys + ", white : " + this.whiteKeys);
     }
 
+    @Override
     public void draw(GraphicsContext context) {
 
         //TODO create function to recalculate those values, called when window resized in MainWindow.java
         double width = context.getCanvas().getWidth();
         double height = context.getCanvas().getHeight();
         int whiteKeyHeight = (int)Math.round(1/3. * height);
+
         int whiteKeyWidth = (int)Math.round(width / this.whiteKeys);
         int blackKeyWidth = (int)Math.round(2/3. * whiteKeyWidth);
         int halfBlackKeyWidth = (int)Math.round(0.5 * blackKeyWidth);
         int blackKeyHeight = (int)Math.round(0.5 * whiteKeyHeight);
 
         // white keys
-        int whiteKeysPassed = 0;
+        int whiteKeysPassed = (int)Math.round(this.getBounds()[0] * width);
         for(int i = 0; i < this.totalKeys; i++) {
             if(!MusicTheory.isBlackKey(i)) {
-                context.setFill(RealTimeAnalysis.getInstance().resolveColor(MidiDeviceManager.defaultChannel, this.lowMidiC + i));
+                context.setFill(JazzPlayer.getInstance().resolveColor(MidiDeviceManager.defaultChannel, this.lowMidiC + i));
                 context.fillRect(whiteKeysPassed * whiteKeyWidth, height - whiteKeyHeight, whiteKeyWidth, whiteKeyHeight);
                 context.setStroke(Color.BLACK);
                 context.strokeRect(whiteKeysPassed * whiteKeyWidth, height - whiteKeyHeight, whiteKeyWidth, whiteKeyHeight);
@@ -68,7 +73,7 @@ public class PianoView {
         whiteKeysPassed = 0;
         for(int i = 0; i < this.totalKeys; i++) {
             if(MusicTheory.isBlackKey(i)) {
-                context.setFill(RealTimeAnalysis.getInstance().resolveColor(MidiDeviceManager.defaultChannel, this.lowMidiC + i));
+                context.setFill(JazzPlayer.getInstance().resolveColor(MidiDeviceManager.defaultChannel, this.lowMidiC + i));
                 context.fillRect(whiteKeysPassed * whiteKeyWidth - halfBlackKeyWidth, height - whiteKeyHeight, blackKeyWidth, blackKeyHeight);
                 context.setStroke(Color.BLACK);
                 context.strokeRect(whiteKeysPassed * whiteKeyWidth - halfBlackKeyWidth, height - whiteKeyHeight, blackKeyWidth, blackKeyHeight);

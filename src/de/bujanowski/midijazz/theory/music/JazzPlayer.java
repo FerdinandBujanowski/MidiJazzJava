@@ -1,6 +1,7 @@
 package de.bujanowski.midijazz.theory.music;
 
-import de.bujanowski.midijazz.gui.PianoView;
+import de.bujanowski.midijazz.gui.elements.PianoView;
+import de.bujanowski.midijazz.theory.music.elements.Note;
 import javafx.scene.paint.Color;
 import de.bujanowski.midijazz.midi.MidiMessageListener;
 
@@ -9,17 +10,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RealTimeAnalysis {
-    private static RealTimeAnalysis INSTANCE;
+public class JazzPlayer {
+    private static JazzPlayer INSTANCE;
 
     /**
      * For each channel (key to the map), keeps track of which notes are turned on / off
      */
     private Map<Integer, List<Integer>> notesOn;
+    private Note currentRoot;
 
     private final MidiMessageListener noteStateUpdater = new MidiMessageListener() {
-        @Override
-        public void noteOn(int channel, int key, int velocity) {
+        @Override public void noteOn(int channel, int key, int velocity) {
             Integer channelInteger = channel;
             Integer keyInteger = key;
 
@@ -27,9 +28,7 @@ public class RealTimeAnalysis {
             List<Integer> notesOnChannel = notesOn.get(channelInteger);
             if(!notesOnChannel.contains(keyInteger)) notesOnChannel.add(keyInteger);
         }
-
-        @Override
-        public void noteOff(int channel, int key, int velocity) {
+        @Override public void noteOff(int channel, int key, int velocity) {
             Integer channelInteger = channel;
             Integer keyInteger = key;
 
@@ -39,12 +38,12 @@ public class RealTimeAnalysis {
         }
     };
 
-    private RealTimeAnalysis() {
+    private JazzPlayer() {
         this.notesOn = new HashMap<>();
     }
 
-    public static RealTimeAnalysis getInstance() {
-        if(INSTANCE == null) INSTANCE = new RealTimeAnalysis();
+    public static JazzPlayer getInstance() {
+        if(INSTANCE == null) INSTANCE = new JazzPlayer();
         return INSTANCE;
     }
 

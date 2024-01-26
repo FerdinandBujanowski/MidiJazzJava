@@ -1,10 +1,14 @@
 package de.bujanowski.midijazz.theory.music;
 
-import de.bujanowski.midijazz.theory.JsonReader;
-import de.bujanowski.midijazz.theory.music.elements.Scale;
+import de.bujanowski.midijazz.theory.reader.ElementReader;
+import de.bujanowski.midijazz.theory.music.elements.*;
+import de.bujanowski.midijazz.theory.music.elements.chords.ChordFamily;
+import de.bujanowski.midijazz.theory.music.structures.ScaleHierarchy;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MusicTheory {
 
@@ -20,6 +24,7 @@ public class MusicTheory {
             {"E", "D##", "Fb"}, {"F", "E#", "Gbb"}, {"F#", "Gb"}, {"G", "F##", "Abb"},
             {"G#", "Ab"}, {"A", "G##", "Bbb"}, {"A#", "Bb"}, {"B", "A##", "Cb"}
     };
+    public static final String[] circleBases = {"C", "Db", "D", "Eb", "E", "F", "(F#/Gb)", "G", "Ab", "A", "Bb", "B"};
     public static final String sharp = "#";
     public static final String flat = "b";
 
@@ -29,12 +34,22 @@ public class MusicTheory {
 
     private static MusicTheory INSTANCE;
     private List<Scale> scales;
+    private Map<String, ChordFamily> chordFamilies;
+    private ScaleHierarchy scaleHierarchy;
 
     private MusicTheory() {
-        this.scales = JsonReader.readScales();
+        this.scales = ElementReader.readScales();
         Collections.sort(this.scales);
-        for(Scale s : this.scales) {
-            System.out.println(s);
+
+        this.scaleHierarchy = new ScaleHierarchy();
+        for(Scale scale : this.scales) {
+            this.scaleHierarchy.addScale(scale);
+        }
+        this.scaleHierarchy.log();
+
+        this.chordFamilies = new HashMap<>();
+        for(ChordFamily chordFamily : ElementReader.readChords()) {
+            this.chordFamilies.put(chordFamily.getName(), chordFamily);
         }
     }
 
@@ -49,5 +64,9 @@ public class MusicTheory {
             if(key == blackValue) return true;
         }
         return false;
+    }
+
+    public ChordFamily getChordFamily(String name) {
+        return this.chordFamilies.get(name);
     }
 }

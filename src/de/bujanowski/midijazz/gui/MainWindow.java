@@ -1,5 +1,6 @@
 package de.bujanowski.midijazz.gui;
 
+import de.bujanowski.midijazz.gui.elements.PianoView;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.CheckMenuItem;
@@ -30,6 +31,7 @@ public class MainWindow {
     private Menu inputMenu, refreshMenu;
 
     private PianoView pianoView;
+    private double[] pianoBounds = {0., 2/3., 1., 1/3.};
 
     public MainWindow(Stage stage) {
         this.stage = stage;
@@ -39,12 +41,15 @@ public class MainWindow {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.canvas = new Canvas(2/3. * screenSize.width, 2/3. * screenSize.height);
 
+        //TODO somehow make this one function
         this.stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            this.canvas.setWidth((double)newVal);
+            this.canvas.setWidth((Double) newVal);
+            this.pianoView.resize(this.canvas);
             this.draw();
         });
         this.stage.heightProperty().addListener((obs, oldVal, newVal) -> {
-            this.canvas.setHeight((double)newVal);
+            this.canvas.setHeight((Double) newVal);
+            this.pianoView.resize(this.canvas);
             this.draw();
         });
         this.vBox = new VBox();
@@ -76,7 +81,7 @@ public class MainWindow {
         vBox.getChildren().add(this.canvas);
         this.stage.setScene(new Scene(this.vBox));
 
-        this.pianoView = new PianoView(-1, 2);
+        this.pianoView = new PianoView(this.pianoBounds, -1, 2);
 
         // update GUI on incoming MIDI event
         MidiDeviceManager.getInstance().addMessageListener(new MidiMessageListener() {

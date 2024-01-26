@@ -2,7 +2,7 @@ package de.bujanowski.midijazz.midi;
 
 import javax.sound.midi.*;
 import de.tobiaserichsen.tevm.TeVirtualMIDI;
-import de.bujanowski.midijazz.theory.music.RealTimeAnalysis;
+import de.bujanowski.midijazz.theory.music.JazzPlayer;
 
 import java.util.*;
 
@@ -65,7 +65,7 @@ public class MidiDeviceManager {
         };
 
         // FIRST ADDED LISTENER : updates which notes are turned on / off
-        this.messageListeners.add(RealTimeAnalysis.getInstance().getNoteStateUpdater());
+        this.messageListeners.add(JazzPlayer.getInstance().getNoteStateUpdater());
     }
 
     public static MidiDeviceManager getInstance() {
