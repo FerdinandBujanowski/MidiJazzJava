@@ -18,7 +18,7 @@ public class ChordFamily implements Steppable, IVoicing {
 
     private final Map<String, Voicing> childVoicings;
 
-    private ChordFamily(String name, int[] chordNotes, int[] availableTension, String[] noteSymbols) {
+    private ChordFamily(String name, int[] chordNotes, int[] availableTension, String[] noteSymbols, Map<String, String[]> voicingNotes) {
         this.name = name;
         this.chordNotes = chordNotes;
         this.availableTension = availableTension;
@@ -45,10 +45,13 @@ public class ChordFamily implements Steppable, IVoicing {
         }
 
         this.childVoicings = new HashMap<>();
+        for(String voicingName : voicingNotes.keySet()) {
+            this.childVoicings.put(voicingName, new Voicing(this, voicingName, voicingNotes.get(voicingName)));
+        }
     }
 
-    public static ChordFamily buildChord(String name, int[] chordNotes, int[] availableTension, String[] noteSymbols) {
-        return new ChordFamily(name, chordNotes, availableTension, noteSymbols);
+    public static ChordFamily buildChord(String name, int[] chordNotes, int[] availableTension, String[] noteSymbols, Map<String, String[]> voicingNotes) {
+        return new ChordFamily(name, chordNotes, availableTension, noteSymbols, voicingNotes);
     }
 
     /**
@@ -69,6 +72,10 @@ public class ChordFamily implements Steppable, IVoicing {
     public int getNoteStep(String relativeName) {
         if(!this.symbolMap.containsKey(relativeName)) return 0;
         return this.symbolMap.get(relativeName);
+    }
+
+    public Voicing getVoicing(String name) {
+        return this.childVoicings.get(name);
     }
 
     @Override
@@ -94,8 +101,13 @@ public class ChordFamily implements Steppable, IVoicing {
     }
 
     @Override
-    public Note[] getNotes(int inversion, boolean root, boolean five) {
+    public Note[] getNotes(int midiRoot, int inversion, boolean withRoot, boolean withFive) {
 
         return new Note[0];
+    }
+
+    @Override
+    public ChordFamily getFamily() {
+        return this;
     }
 }

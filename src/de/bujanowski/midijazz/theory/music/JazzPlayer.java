@@ -2,6 +2,7 @@ package de.bujanowski.midijazz.theory.music;
 
 import de.bujanowski.midijazz.gui.elements.PianoView;
 import de.bujanowski.midijazz.theory.music.elements.Note;
+import de.bujanowski.midijazz.theory.reader.Pipeline;
 import javafx.scene.paint.Color;
 import de.bujanowski.midijazz.midi.MidiMessageListener;
 
@@ -19,6 +20,9 @@ public class JazzPlayer {
     private Map<Integer, List<Integer>> notesOn;
     private Note currentRoot;
 
+    private Pipeline currentPipeline;
+    private boolean taskFinish;
+
     private final MidiMessageListener noteStateUpdater = new MidiMessageListener() {
         @Override public void noteOn(int channel, int key, int velocity) {
             Integer channelInteger = channel;
@@ -34,12 +38,14 @@ public class JazzPlayer {
 
             if(!notesOn.containsKey(channelInteger)) return;
             List<Integer> notesOnChannel = notesOn.get(channelInteger);
-            if(notesOnChannel.contains(keyInteger)) notesOnChannel.remove(keyInteger);
+            notesOnChannel.remove(keyInteger);
         }
     };
 
     private JazzPlayer() {
         this.notesOn = new HashMap<>();
+        this.currentPipeline = Pipeline.buildPipeline(Pipeline.basePath + "voicings/01_block_chords.json");
+        this.taskFinish = false;
     }
 
     public static JazzPlayer getInstance() {

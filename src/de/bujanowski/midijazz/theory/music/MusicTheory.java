@@ -25,6 +25,7 @@ public class MusicTheory {
             {"G#", "Ab"}, {"A", "G##", "Bbb"}, {"A#", "Bb"}, {"B", "A##", "Cb"}
     };
     public static final String[] circleBases = {"C", "Db", "D", "Eb", "E", "F", "(F#/Gb)", "G", "Ab", "A", "Bb", "B"};
+
     public static final String sharp = "#";
     public static final String flat = "b";
 
@@ -64,6 +65,19 @@ public class MusicTheory {
             if(key == blackValue) return true;
         }
         return false;
+    }
+
+    public static String getRootName(int midi) {
+        return circleBases[midi % stepsInOctave];
+    }
+
+    public static int translateCircleToChromatic(int circleProgress) {
+        assert(circleProgress <= stepsInOctave && circleProgress >= -stepsInOctave);
+        if(circleProgress < 0) circleProgress = stepsInOctave + circleProgress;
+        //+1 step in circle represents +7 half steps chromatically
+        // -> -1 represents -7 chromatic steps <=> +5 chromatic steps
+
+        return (circleProgress * 7) % stepsInOctave;
     }
 
     public ChordFamily getChordFamily(String name) {

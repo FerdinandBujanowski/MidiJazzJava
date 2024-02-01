@@ -7,7 +7,9 @@ import de.bujanowski.midijazz.theory.music.elements.chords.ChordFamily;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public abstract class ElementReader {
 
@@ -19,6 +21,9 @@ public abstract class ElementReader {
     public static final String C_NOTES = "chord_notes";
     public static final String A_TENSION = "available_tension";
     public static final String N_SYMBOLS = "note_symbols";
+
+    public static final String CHILDREN = "children";
+    public static final String NOTES = "notes";
 
     public static List<Scale> readScales() {
         List<Scale> scales = new ArrayList<>();
@@ -110,7 +115,25 @@ public abstract class ElementReader {
                 noteSymbols[i] = symbolArray.get(i).getAsString();
             }
 
-            chordFamilyList.add(ChordFamily.buildChord(name, chordNotes, availableTension, noteSymbols));
+            // child voicings
+            Map<String, String[]> voicings = new HashMap<>();
+
+            if(chord.has(CHILDREN)) {
+                JsonArray childrenArray = chord.getAsJsonArray(CHILDREN);
+
+                for(JsonElement voicingElement : childrenArray) {
+                    JsonObject voicingObject = voicingElement.getAsJsonObject();
+                    String voicingName = voicingObject.get(NAME).getAsString();
+                    JsonArray voicingNoteArray = voicingObject.getAsJsonArray(NOTES);
+                    String[] voicingNotes = new String[voicingNoteArray.size()];
+                    for(int i = 0; i < voicingNotes.length; i++) {
+                        voicingNotes[i] = voicingNoteArray.get(i).getAsString();
+                    }
+                    voicings.put(voicingName, voicingNotes);
+                }
+            }
+
+            chordFamilyList.add(ChordFamily.buildChord(name, chordNotes, availableTension, noteSymbols, voicings));
         }
         return chordFamilyList;
     }
