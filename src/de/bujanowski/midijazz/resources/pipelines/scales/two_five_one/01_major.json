@@ -1,0 +1,78 @@
+{
+  "title": "Patterns for II-V7-I All Major Keys",
+  "description": "",
+  "skills": [
+    {
+      "name": "Pattern 1",
+      "type": "several",
+      "value": {
+        "measures": [
+          {
+            "beats": 4,
+            "type": "pattern",
+            "value": {
+              "harmony": "m7",
+              "scale": "minor",
+              "pattern": ["1.4=1", "1.4=2", "2.4=3"]
+            }
+          },
+          {
+            "type": "pattern",
+            "value": {
+              "harmony": "7",
+              "scale": "dominant",
+              "pattern": ["1.4=1", "1.4=2", "2.4=3"]
+            }
+          },
+          {
+            "repeat": 2,
+            "type": "pattern",
+            "value": {
+              "harmony": "Maj7",
+              "scale": "major",
+              "pattern": ["1.4=1", "1.4=2", "2.4=3"]
+            }
+          }
+        ]
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    },
+    {
+      "name": "Pattern 2",
+      "type": "several",
+      "value": {
+        "measures": [
+          {
+            "beats": 4,
+            "type": "pattern",
+            "value": {
+              "harmony": "m7",
+              "scale": "minor",
+              "pattern": ["1.4=1", "1.8=1", "1.8=2", "2.4=3"]
+            }
+          },
+          {
+            "type": "pattern",
+            "value": {
+              "harmony": "7",
+              "scale": "dominant",
+              "pattern": ["1.4=1", "1.8=1", "1.8=2", "2.4=3"]
+            }
+          },
+          {
+            "repeat": 2,
+            "type": "pattern",
+            "value": {
+              "harmony": "Maj7",
+              "scale": "major",
+              "pattern": ["1.4=1", "1.8=1", "1.8=2", "2.4=3"]
+            }
+          }
+        ]
+      },
+      "circle_offset": 0,
+      "circle_progress": -1
+    }
+  ]
+}
